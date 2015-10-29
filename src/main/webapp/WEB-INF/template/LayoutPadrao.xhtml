@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>
+		<ui:insert name="titulo">What I do?</ui:insert>
+	</title>
+	
+	<h:outputStylesheet library="css" name="wid.css"></h:outputStylesheet>
+</h:head>
+
+<h:body>
+	
+	<header>
+		<div class="menu-logo">
+			What I Do?
+		</div>
+		
+		<div class="menu-opcoes">
+				<span class="menu-saudacao">
+				Olá Lucas
+				</span>
+				
+				<h:form style="display: inline-block">
+					<p:menubar styleClass="menu-sistema">
+						<p:submenu label="Nova Lista">
+							<p:menuitem value="Clientes" />
+							<p:menuitem value="Usuários" />
+							<p:separator/>
+							<p:menuitem value="Categorias" />
+						</p:submenu>
+						
+						<p:submenu label="Contato">
+							<p:menuitem value="Novo pedido" />
+							<p:menuitem value="Pesquisa" />
+						</p:submenu>
+						
+						<p:menuitem value="Logout" />
+					</p:menubar>
+				</h:form>
+			</div>
+			
+			<div style="clear: both"></div>
+	</header>
+	
+	<div id="conteudo">
+		<ui:insert name="corpo"></ui:insert>
+	</div>
+	
+	
+	<footer>
+		<p:separator styleClass="separator" />
+		What I Do? - Veja também:
+		<a href="http://whatacolor.tk" target="_blank">WhatAcolor?!</a>
+	</footer>
+
+</h:body>
+
+</html>
