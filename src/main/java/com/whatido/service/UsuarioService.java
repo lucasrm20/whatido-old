@@ -18,7 +18,19 @@ public class UsuarioService implements Serializable {
 	
 	@Transactional
 	public Usuario salvar(Usuario usuario){
-		usuario.setPemissao(Permissao.COMUM);
-		return usuarioDAO.salvar(usuario);
+		if(isEmailJaCadastrado(usuario)){
+			throw new NegocioException("O email '"+ usuario.getEmail() +"' já esta cadastrado");
+		}else{			
+			usuario.setPemissao(Permissao.COMUM);
+			return usuarioDAO.salvar(usuario);
+		}
+	}
+	
+	public boolean isEmailJaCadastrado(Usuario usuario){
+		if(usuarioDAO.buscarPorEmail(usuario.getEmail()) != null){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

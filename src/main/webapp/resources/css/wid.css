@@ -16,11 +16,11 @@ header {
 	box-shadow: 0px 2px 2px #CCC;
 }
 
-header > div{
+header>div {
 	margin-left: 10px;
 }
 
-#conteudo{
+#conteudo {
 	padding: 0px 10px;
 }
 
@@ -54,18 +54,29 @@ header > div{
 	color: #ffffff !important;
 }
 
-.titulo-pagina{
+.titulo-pagina {
 	font-size: 24px;
 	font-weight: 500;
 	padding: 0;
 	margin: 0;
 }
 
-.barra-ferramentas{
+.barra-ferramentas {
 	margin-top: 20px;
 }
 
-.grid-formulario{
+.grid-formulario {
 	width: 100%;
 	margin-top: 10px;
 }
+
+.auto-adaptavel {
+	width: -moz-available;
+}
+
+/* PAGINA DE CADASTRO */
+.form-cadastro {
+	width: 30%;
+	margin: auto;
+}
+/* PAGINA DE CADASTRO */

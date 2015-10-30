@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import com.whatido.model.Usuario;
 
@@ -25,6 +26,16 @@ public class UsuarioDAO implements Serializable {
 	
 	public Usuario buscarPorId(Integer id){
 		return manager.find(Usuario.class, id);
+	}
+	
+	public Usuario buscarPorEmail(String email){
+		try{
+			return manager.createQuery("from Usuario where upper(email)= :pEmail", Usuario.class)
+					.setParameter("pEmail", email.toUpperCase())
+					.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
 	}
 	
 }
