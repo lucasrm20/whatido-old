@@ -6,11 +6,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 	
-	<ui:define name="titulo">Erro</ui:define>
+	<ui:define name="titulo">Usuario Comum</ui:define>
 	
 	<ui:define name="corpo">
-		<h1>Um problema ocorreu</h1>
-		<p>Houve um erro ao processar sua requisição, por favor tente novamente.</p>
-		<p>Caso o erro persista, por favor entre em contato conosco.</p>
+		<h:form>
+			<p:messages autoUpdate="true" closable="true" />
+			
+			<p:outputLabel value="Usuario Comum" />
+		</h:form>
 	</ui:define>
 </ui:composition>

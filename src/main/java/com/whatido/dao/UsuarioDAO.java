@@ -30,8 +30,8 @@ public class UsuarioDAO implements Serializable {
 	
 	public Usuario buscarPorEmail(String email){
 		try{
-			return manager.createQuery("from Usuario where upper(email)= :pEmail", Usuario.class)
-					.setParameter("pEmail", email.toUpperCase())
+			return manager.createQuery("from Usuario where lower(email)= :pEmail", Usuario.class)
+					.setParameter("pEmail", email.toLowerCase())
 					.getSingleResult();
 		}catch(NoResultException e){
 			return null;
