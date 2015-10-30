@@ -75,6 +75,15 @@
 			<version>5.1.37</version>
 		</dependency>
 		<!-- Driver MySQL -->
+
+		<!-- Hibernate Validator / Bean Validation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.2.Final</version>
+		</dependency>
+		<!-- Hibernate Validator / Bean Validation -->
+
 	</dependencies>
 
 	<build>
@@ -91,13 +100,7 @@
 		</plugins>
 	</build>
 
-	<!-- 
-	<repositories>
-		<repository>
-			<id>prime-repo</id>
-			<name>PrimeFaces Maven Repository</name>
-			<url>http://repository.primefaces.org</url>
-			<layout>default</layout>
-		</repository>
-	</repositories> -->
+	<!-- <repositories> <repository> <id>prime-repo</id> <name>PrimeFaces Maven 
+		Repository</name> <url>http://repository.primefaces.org</url> <layout>default</layout> 
+		</repository> </repositories> -->
 </project>

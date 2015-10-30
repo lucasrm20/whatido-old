@@ -13,6 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 public class Usuario implements Serializable {
 
@@ -22,10 +25,13 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank
 	private String nome;
 	
+	@NotBlank @Email
 	private String email;
 	
+	@NotBlank
 	private String senha;
 	
 	@Enumerated(EnumType.STRING)
