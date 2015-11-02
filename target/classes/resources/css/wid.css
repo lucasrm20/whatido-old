@@ -74,6 +74,10 @@ header>div {
 	width: -moz-available;
 }
 
+.tabela-itens{
+	margin-top: 20px;
+}
+
 /* PAGINA DE CADASTRO */
 .form-cadastro {
 	width: 30%;

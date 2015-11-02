@@ -43,7 +43,10 @@
 							<p:menuitem value="Pesquisa" />
 						</p:submenu>
 						
-						<p:menuitem value="Logout" url="/j_spring_security_logout" />
+						<p:menuitem value="Login" outcome="/usuario/Login"
+							rendered="#{!seguranca.usuarioLogado}" />
+						<p:menuitem value="Logout" url="/j_spring_security_logout"
+							rendered="#{seguranca.usuarioLogado}" />
 					</p:menubar>
 				</h:form>
 			</div>

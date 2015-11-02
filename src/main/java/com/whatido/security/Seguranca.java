@@ -22,7 +22,7 @@ public class Seguranca {
 		return nome;
 	}
 
-	private UsuarioSistema getUsuarioLogado() {
+	public UsuarioSistema getUsuarioLogado() {
 		UsuarioSistema usuario = null;
 		
 		UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken) FacesContext
@@ -35,6 +35,7 @@ public class Seguranca {
 		return usuario;
 	}
 	
+	@RequestScoped
 	public boolean isUsuarioLogado(){
 		UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken) FacesContext
 				.getCurrentInstance().getExternalContext().getUserPrincipal();

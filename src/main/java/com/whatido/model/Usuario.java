@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -37,7 +38,7 @@ public class Usuario implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Permissao pemissao = Permissao.COMUM;
 	
-	@OneToMany(mappedBy="tarefas")
+	@OneToMany(mappedBy="usuario", cascade=CascadeType.ALL)
 	private List<ListaTarefas> listaTarefas = new ArrayList<>();
 	
 	//metodos

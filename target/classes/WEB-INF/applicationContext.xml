@@ -14,6 +14,8 @@
 	<http pattern="/javax.faces.resource/**" security="none" />
 	
 	<http auto-config="false" use-expressions="true">
+		<intercept-url pattern="/listas/Listas.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
+		<intercept-url pattern="/tarefas/Tarefas.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
 		<intercept-url pattern="/TesteAutorizacao.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
 		<intercept-url pattern="/**" access="denyAll"/>
 		
