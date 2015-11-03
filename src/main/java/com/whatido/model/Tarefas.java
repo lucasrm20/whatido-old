@@ -22,6 +22,8 @@ public class Tarefas implements Serializable {
 	@NotBlank
 	private String descricao;
 	
+	private Boolean concluido = Boolean.FALSE;
+	
 	@ManyToOne
 	private ListaTarefas lista;
 	
@@ -50,6 +52,13 @@ public class Tarefas implements Serializable {
 
 	public void setLista(ListaTarefas lista) {
 		this.lista = lista;
+	}
+	
+	public Boolean getConcluido() {
+		return concluido;
+	}
+	public void setConcluido(Boolean concluido) {
+		this.concluido = concluido;
 	}
 
 	//hash e equals

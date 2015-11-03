@@ -3,6 +3,7 @@ package com.whatido.service;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,7 +27,21 @@ public class TarefasService implements Serializable {
 
 	public Tarefas sortear(ListaTarefas listaPai) {
 		List<Tarefas> lista = new ArrayList<>(listaPai.getTarefas());
-		Collections.shuffle(lista);
+		
+		for (Iterator<Tarefas> i = lista.iterator(); i.hasNext();) {
+			Tarefas item = i.next();
+			
+			if(item.getConcluido().equals(Boolean.TRUE)){
+				i.remove();
+			}
+		}
+		
+		if(!lista.isEmpty()){			
+			Collections.shuffle(lista);
+		}else{
+			throw new NegocioException("Todos os itens desta lista já foram concluídos.");
+		}
+		
 		return lista.get(0);
 	}
 	

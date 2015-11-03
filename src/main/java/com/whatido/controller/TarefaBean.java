@@ -60,6 +60,10 @@ public class TarefaBean implements Serializable {
 		FacesUtil.addInfoMessage("Tarefa excluída com sucesso.");
 	}
 	
+	public void marcarConcluido(){
+		listaPai = listaTarefasService.salvarEdicao(listaPai);
+	}
+	
 	public void sortear(){
 		tarefaSorteada = tarefasService.sortear(listaPai);
 		FacesUtil.addInfoMessage("Sorteamos a tarefa: " + tarefaSorteada.getDescricao());

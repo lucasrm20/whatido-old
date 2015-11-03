@@ -48,6 +48,12 @@
 				styleClass="tabela-itens" emptyMessage="Nenhuma tarefa encontrada"
 				rows="10" paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom">
 				
+				<p:column headerText="Concluído">
+					<p:selectBooleanCheckbox value="#{lista.concluido}">
+						<p:ajax listener="#{tarefaBean.marcarConcluido}" process="@this" update="@this" />
+					</p:selectBooleanCheckbox>
+				</p:column>
+				
 				<p:column headerText="Descrição">
 					<h:outputText value="#{lista.descricao}" />
 				</p:column>
