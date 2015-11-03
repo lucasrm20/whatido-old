@@ -15,13 +15,13 @@
 	
 		<h:form id="frm">
 			
-			<h1>Suas Listas de Tarefas</h1>
+			<h1>#{tarefaBean.listaPai.descricao}</h1>
 			<p:messages autoUpdate="true" closable="true" />
 			
 			<p:toolbar styleClass="barra-ferramentas">
 				<p:toolbarGroup>
-					<p:button value="Novo" outcome="/listas/Listas" />
-					<p:commandButton value="Salvar" id="botaoSalvar" update="@form" />
+					<p:commandButton value="Salvar" id="botaoSalvar" action="#{tarefaBean.adicionarTarefa}" update="@form" />
+					<p:commandButton value="Sortear" id="botaoSortear" action="#{tarefaBean.sortear}" update="@form" process="@this" />
 				</p:toolbarGroup>
 				
 				<p:toolbarGroup align="right">
@@ -29,10 +29,48 @@
 				</p:toolbarGroup>
 			</p:toolbar>
 			
+			<p:panelGrid columns="3" styleClass="grid-formulario">
+				<p:outputLabel value="Nome da lista" for="descricaoLista" />
+				<p:inputText id="descricaoLista" value="#{tarefaBean.listaPai.descricao}" />
+				<p:commandButton value="Alterar descrição" id="botaoAlterarDescricao"
+					action="#{tarefaBean.alterarDescricaoLista}" update="@form" />
+			</p:panelGrid>
+			
+			<h2>Adicionar nova tarefa</h2>
 			<p:panelGrid columns="2" styleClass="grid-formulario">
 				<p:outputLabel value="Descrição" for="descricao" />
-				<p:inputText id="descricao" value="#{tarefaBean.listaPai.descricao}" />
+				<p:inputText id="descricao" value="#{tarefaBean.tarefa.descricao}" />
 			</p:panelGrid>
+			
+			<span>Nossa sugestão: <p:outputLabel value="#{tarefaBean.tarefaSorteada.descricao}" /> </span>
+			
+			<p:dataTable id="tarefasTable" value="#{tarefaBean.listaPai.tarefas}" var="lista"
+				styleClass="tabela-itens" emptyMessage="Nenhuma tarefa encontrada"
+				rows="10" paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom">
+				
+				<p:column headerText="Descrição">
+					<h:outputText value="#{lista.descricao}" />
+				</p:column>
+				
+				<p:column>
+					<p:commandButton icon="ui-icon-trash" title="Excluir"
+						oncomplete="PF('confirmacaoExclusao').show()" process="@this"
+						update=":frm:confirmacaoExclusaoDialog">
+						<f:setPropertyActionListener target="#{tarefaBean.itemSelecionado}"
+							value="#{lista}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		
+			<p:confirmDialog global="true" widgetVar="confirmacaoExclusao" header="Confirmar Exclusão"
+				message="Tem certeza que deseja excluir a tarefa #{tarefaBean.itemSelecionado.descricao}?"
+				id="confirmacaoExclusaoDialog" showEffect="fade" hideEffect="fade">
+				<p:commandButton type="button" value="Não" onclick="PF('confirmacaoExclusao').hide()"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+				<p:commandButton value="Sim" actionListener="#{tarefaBean.excluir}" process="@this"
+					update=":frm:tarefasTable" oncomplete="PF('confirmacaoExclusao').hide()"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+			</p:confirmDialog>
 		
 		</h:form>
 	</ui:define>

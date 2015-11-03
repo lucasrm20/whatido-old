@@ -35,6 +35,9 @@
 				
 				<p:column headerText="Descrição">
 					<h:outputText value="#{lista.descricao}" />
+					<p:link value="#{lista.descricao}" outcome="/tarefas/Tarefas">
+						<f:param name="listaPai" value="#{lista.id}" />
+					</p:link>
 				</p:column>
 				
 				<p:column>

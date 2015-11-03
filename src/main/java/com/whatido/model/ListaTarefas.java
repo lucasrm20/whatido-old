@@ -1,11 +1,11 @@
 package com.whatido.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +26,8 @@ public class ListaTarefas implements Serializable {
 	@NotBlank
 	private String descricao;
 	
-	@OneToMany(mappedBy="lista", cascade=CascadeType.ALL)
-	private List<Tarefas> tarefas = new ArrayList<>();
+	@OneToMany(mappedBy="lista", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
+	private List<Tarefas> tarefas;
 	
 	@ManyToOne
 	private Usuario usuario;

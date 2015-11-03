@@ -2,7 +2,6 @@ package com.whatido.model;
 
 import java.beans.Transient;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -39,7 +38,7 @@ public class Usuario implements Serializable {
 	private Permissao pemissao = Permissao.COMUM;
 	
 	@OneToMany(mappedBy="usuario", cascade=CascadeType.ALL)
-	private List<ListaTarefas> listaTarefas = new ArrayList<>();
+	private List<ListaTarefas> listaTarefas;
 	
 	//metodos
 	@Transient

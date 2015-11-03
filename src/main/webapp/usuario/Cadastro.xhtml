@@ -24,7 +24,7 @@
 					<p:password id="senha" value="#{cadastroBean.usuario.senha}" styleClass="auto-adaptavel" />
 					
 					<p:spacer />
-					<p:commandButton value="Cadastrar" action="#{cadastroBean.cadastrar}" update="@form" />
+					<p:commandButton value="Cadastrar" action="#{cadastroBean.cadastrar}" ajax="false" update="@form" />
 				</p:panelGrid>
 				
 				<p:link value="Já sou cadastrado" outcome="/usuario/Cadastro" />
