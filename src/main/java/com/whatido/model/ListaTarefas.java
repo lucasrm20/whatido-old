@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -28,6 +29,9 @@ public class ListaTarefas implements Serializable {
 	
 	@OneToMany(mappedBy="lista", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
 	private List<Tarefas> tarefas;
+	
+	@OneToOne
+	private Tarefas ultimaTarefaSorteada;
 	
 	@ManyToOne
 	private Usuario usuario;
@@ -65,6 +69,13 @@ public class ListaTarefas implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	public Tarefas getUltimaTarefaSorteada() {
+		return ultimaTarefaSorteada;
+	}
+	public void setUltimaTarefaSorteada(Tarefas ultimaTarefaSorteada) {
+		this.ultimaTarefaSorteada = ultimaTarefaSorteada;
 	}
 
 	//hash e equals

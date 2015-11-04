@@ -42,7 +42,7 @@
 				<p:inputText id="descricao" value="#{tarefaBean.tarefa.descricao}" />
 			</p:panelGrid>
 			
-			<span>Nossa sugestão: <p:outputLabel value="#{tarefaBean.tarefaSorteada.descricao}" /> </span>
+			<span>Nossa sugestão: <p:outputLabel value="#{tarefaBean.listaPai.ultimaTarefaSorteada.descricao}" /> </span>
 			
 			<p:dataTable id="tarefasTable" value="#{tarefaBean.listaPai.tarefas}" var="lista"
 				styleClass="tabela-itens" emptyMessage="Nenhuma tarefa encontrada"

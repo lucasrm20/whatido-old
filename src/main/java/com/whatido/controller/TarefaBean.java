@@ -24,8 +24,6 @@ public class TarefaBean implements Serializable {
 	private Tarefas tarefa;
 	
 	private Tarefas itemSelecionado;
-	
-	private Tarefas tarefaSorteada;
 
 	@Inject
 	private ListaTarefasService listaTarefasService;
@@ -65,8 +63,9 @@ public class TarefaBean implements Serializable {
 	}
 	
 	public void sortear(){
-		tarefaSorteada = tarefasService.sortear(listaPai);
-		FacesUtil.addInfoMessage("Sorteamos a tarefa: " + tarefaSorteada.getDescricao());
+		listaPai.setUltimaTarefaSorteada(tarefasService.sortear(listaPai));
+		listaTarefasService.salvarEdicao(listaPai);
+		FacesUtil.addInfoMessage("Sorteamos a tarefa: " + listaPai.getUltimaTarefaSorteada().getDescricao());
 	}
 	
 	//getters setters
@@ -84,9 +83,6 @@ public class TarefaBean implements Serializable {
 	}
 	public void setItemSelecionado(Tarefas itemSelecionado) {
 		this.itemSelecionado = itemSelecionado;
-	}
-	public Tarefas getTarefaSorteada() {
-		return tarefaSorteada;
 	}
 	
 }
