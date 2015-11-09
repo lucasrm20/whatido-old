@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.whatido.service.NegocioException;
+import com.whatido.util.email.TipoEmail;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -27,10 +28,10 @@ public class FreemarkerConfig implements Serializable {
 		return cfg;
 	}
 
-	public String getEmailComTemplate(String template, Object parametro) {
+	public String getEmailComTemplate(TipoEmail tipoEmail, Object parametro) {
 		try {
 			Configuration cfg = getFreemarkerConfig();
-			Template tmplt = cfg.getTemplate(template);
+			Template tmplt = cfg.getTemplate(tipoEmail.getDescricao());
 
 			// Insere parametros
 			Map<String, Object> data = new HashMap<>();

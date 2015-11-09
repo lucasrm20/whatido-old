@@ -31,6 +31,7 @@ public class CadastroBean implements Serializable {
 	
 	public void cadastrar(){
 		usuario = usuarioService.salvar(usuario);
+		usuarioService.enviarEmailConfirmacao(usuario);
 		limpar();
 		FacesUtil.addInfoMessage("Cadastro realizado, por favor verifique seu email.");
 	}

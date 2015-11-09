@@ -33,7 +33,7 @@ public class ListaTarefas implements Serializable {
 	@OneToOne
 	private Tarefas ultimaTarefaSorteada;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Usuario usuario;
 	
 	//metodos

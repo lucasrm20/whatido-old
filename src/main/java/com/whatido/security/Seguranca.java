@@ -35,6 +35,19 @@ public class Seguranca {
 		return usuario;
 	}
 	
+	public Integer getIdUsuarioLogado() {
+		UsuarioSistema usuario = null;
+		
+		UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken) FacesContext
+				.getCurrentInstance().getExternalContext().getUserPrincipal();
+		
+		if(auth != null && auth.getPrincipal() != null){
+			usuario = (UsuarioSistema) auth.getPrincipal();
+		}
+		
+		return usuario.getUsuario().getId();
+	}
+	
 	@RequestScoped
 	public boolean isUsuarioLogado(){
 		UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken) FacesContext

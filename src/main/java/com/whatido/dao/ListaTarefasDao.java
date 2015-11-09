@@ -42,7 +42,7 @@ public class ListaTarefasDao implements Serializable {
 	}
 	
 	public List<ListaTarefas> buscarTodasPorUsuario(Integer id){
-		return manager.createQuery("from ListaTarefas where id= :pId", ListaTarefas.class)
+		return manager.createQuery("from ListaTarefas where usuario.id= :pId", ListaTarefas.class)
 				.setParameter("pId", id)
 				.getResultList();
 	}

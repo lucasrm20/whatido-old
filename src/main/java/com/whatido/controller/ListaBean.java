@@ -36,11 +36,12 @@ public class ListaBean implements Serializable {
 	
 	private void limpar(){
 		novaLista = new ListaTarefas();
-		listaDeListas = listaDAO.buscarTodas();
+		listaDeListas = listaService.buscarListas();
 	}
 	
 	public void salvar(){
 		novaLista = listaService.salvar(novaLista);
+		listaService.enviarEmailConfirmacao(novaLista);
 		limpar();
 		FacesUtil.addInfoMessage("Lista cadastrada.");
 	}
