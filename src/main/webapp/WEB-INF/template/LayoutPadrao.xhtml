@@ -39,7 +39,7 @@
 							rendered="#{!seguranca.usuarioLogado}" />
 							
 						<p:submenu label="#{seguranca.nomeUsuario}" rendered="#{seguranca.usuarioLogado}" >
-							<p:menuitem value="Minhas Informações" />
+							<p:menuitem value="Minhas Informações" outcome="/usuario/Informacoes" />
 							<p:separator />
 							<p:menuitem value="Logout" url="/j_spring_security_logout"
 							rendered="#{seguranca.usuarioLogado}" />

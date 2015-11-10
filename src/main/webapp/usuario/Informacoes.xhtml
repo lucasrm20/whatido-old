@@ -1,0 +1,44 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="titulo">Minhas Informações</ui:define>
+	
+	<ui:define name="corpo">
+		<div class="form-cadastro">
+			<h:form>
+				<h1>Minhas Informações</h1>
+				<p:messages autoUpdate="true" closable="true" />
+				
+				<p:panelGrid columns="2" styleClass="auto-adaptavel">
+					<p:outputLabel value="Nome" for="nome" />
+					<p:inputText id="nome" value="#{informacoesBean.usuario.nome}" styleClass="auto-adaptavel" />
+					
+					<p:outputLabel value="Email" for="email" />
+					<p:inputText id="email" value="#{informacoesBean.usuario.email}" styleClass="auto-adaptavel" />
+					
+					<p:spacer />
+					<p:commandButton id="botaoInformacoes" value="Salvar alterações" action="#{informacoesBean.salvarInformacoes}"
+						process="@this, nome, email" update="@form" ajax="true" />
+				</p:panelGrid>
+				
+				<h2>Alterar Senha</h2>
+				<p:panelGrid columns="2" styleClass="auto-adaptavel">
+					<p:outputLabel value="Senha atual" for="senhaAtual" />
+					<p:password id="senhaAtual" value="#{informacoesBean.senhaAtual}" styleClass="auto-adaptavel" />
+					
+					<p:outputLabel value="Nova senha" for="novaSenha" />
+					<p:password id="novaSenha" value="#{informacoesBean.novaSenha}" styleClass="auto-adaptavel" />
+					
+					<p:spacer />
+					<p:commandButton id="botaoSenha" value="Alterar Senha" action="#{informacoesBean.alterarSenha}"
+						process="@this, senhaAtual, novaSenha" update="@form" ajax="true" />
+				</p:panelGrid>
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

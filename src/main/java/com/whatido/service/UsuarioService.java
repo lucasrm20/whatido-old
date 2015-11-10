@@ -38,6 +38,33 @@ public class UsuarioService implements Serializable {
 		}
 	}
 	
+	@Transactional
+	public Usuario atualizarInformacoes(Usuario usuario){
+		usuario = usuarioDAO.salvar(usuario);
+		return usuario;
+	}
+	
+	@Transactional
+	public Usuario alterarSenha(Usuario usuario, String senhaAtual, String novaSenha){
+		if(compararSenhas(usuario.getSenha(), senhaAtual)){
+			usuario.setSenha(novaSenha);
+			usuario = usuarioDAO.salvar(usuario);
+		}else{
+			throw new NegocioException("A Senha atual informada é incorreta");
+		}
+		
+		return usuario;
+	}
+	
+	public void recuperarSenha(String email) {
+		Usuario usuario = usuarioDAO.buscarPorEmail(email);
+		if(usuario != null){
+			
+		}else{
+			throw new NegocioException("O email informado não existe no sistema");
+		}
+	}
+	
 	public void enviarEmailConfirmacao(Usuario usuario) {
 		try {
 			HtmlEmail email = (HtmlEmail) mailConfig.getMailConfig();
@@ -61,4 +88,9 @@ public class UsuarioService implements Serializable {
 			return false;
 		}
 	}
+	
+	private boolean compararSenhas(String senhaAtual, String senhaAtualInformada ){
+		return senhaAtual.equals(senhaAtualInformada);
+	}
+
 }

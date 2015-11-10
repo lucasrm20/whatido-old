@@ -12,8 +12,11 @@
 	
 	<http auto-config="false" use-expressions="true">
 		<intercept-url pattern="/Home.xhtml" access="permitAll" />
-		<intercept-url pattern="/usuario/**" access="permitAll"/>
+		<intercept-url pattern="/usuario/Cadastro.xhtml" access="permitAll"/>
+		<intercept-url pattern="/usuario/Login.xhtml" access="permitAll"/>
+		<intercept-url pattern="/usuario/RecuperarSenha.xhtml" access="permitAll"/>
 		<intercept-url pattern="/Erro.xhtml" access="permitAll"/>
+		<intercept-url pattern="/usuario/Informacoes.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
 		<intercept-url pattern="/listas/Listas.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
 		<intercept-url pattern="/tarefas/Tarefas.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
 		<intercept-url pattern="/TesteAutorizacao.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>

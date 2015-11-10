@@ -1,0 +1,28 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="titulo">Recuperar Senha</ui:define>
+	
+	<ui:define name="corpo">
+		<div class="form-cadastro">
+			<h:form>
+				<h1>Recuperar Senha</h1>
+				<p:messages autoUpdate="true" closable="true" />
+				
+				<p:panelGrid columns="2" styleClass="auto-adaptavel">
+					
+					<p:outputLabel value="Email" for="email" />
+					<p:inputText id="email" value="#{recuperarSenhaBean.email}" styleClass="auto-adaptavel" />
+					
+					<p:spacer />
+					<p:commandButton value="Recuperar" action="#{recuperarSenhaBean.recuperar}" ajax="false" update="@form" />
+				</p:panelGrid>
+				
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
