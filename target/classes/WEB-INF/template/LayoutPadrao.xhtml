@@ -26,27 +26,24 @@
 		<div class="menu-opcoes">
 				
 				<c:if test="#{seguranca.usuarioLogado}">
-					<span class="menu-saudacao">Olá #{seguranca.nomeUsuario}</span>
+					<span class="menu-saudacao">Olá, #{seguranca.nomeUsuario}!</span>
 				</c:if>
 				
 				<h:form style="display: inline-block">
 					<p:menubar styleClass="menu-sistema">
-						<p:submenu label="Nova Lista">
-							<p:menuitem value="Clientes" />
-							<p:menuitem value="Usuários" />
-							<p:separator/>
-							<p:menuitem value="Categorias" />
-						</p:submenu>
+						<p:menuitem value="Nova Lista" outcome="/listas/Listas" />
 						
-						<p:submenu label="Contato">
-							<p:menuitem value="Novo pedido" />
-							<p:menuitem value="Pesquisa" />
-						</p:submenu>
+						<p:menuitem value="Contato" />
 						
 						<p:menuitem value="Login" outcome="/usuario/Login"
 							rendered="#{!seguranca.usuarioLogado}" />
-						<p:menuitem value="Logout" url="/j_spring_security_logout"
+							
+						<p:submenu label="#{seguranca.nomeUsuario}" rendered="#{seguranca.usuarioLogado}" >
+							<p:menuitem value="Minhas Informações" />
+							<p:separator />
+							<p:menuitem value="Logout" url="/j_spring_security_logout"
 							rendered="#{seguranca.usuarioLogado}" />
+						</p:submenu>
 					</p:menubar>
 				</h:form>
 			</div>

@@ -8,19 +8,19 @@
 	
 	<beans:bean id="appUserDetailsService" class="com.whatido.security.AppUserDetailsService" />
 	
-	<http pattern="/Home.xhtml" security="none" />
-	<http pattern="/Erro.xhtml" security="none" />
-	<http pattern="/usuario/**" security="none" />
 	<http pattern="/javax.faces.resource/**" security="none" />
 	
 	<http auto-config="false" use-expressions="true">
+		<intercept-url pattern="/Home.xhtml" access="permitAll" />
+		<intercept-url pattern="/usuario/**" access="permitAll"/>
+		<intercept-url pattern="/Erro.xhtml" access="permitAll"/>
 		<intercept-url pattern="/listas/Listas.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
 		<intercept-url pattern="/tarefas/Tarefas.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
 		<intercept-url pattern="/TesteAutorizacao.xhtml" access="hasAnyRole('ADMINISTRADOR', 'COMUM')"/>
 		<intercept-url pattern="/**" access="denyAll"/>
 		
 		<form-login login-page="/usuario/Login.xhtml" authentication-failure-url="/usuario/Login.xhtml?invalid=true"
-			default-target-url="/" always-use-default-target="true" />
+			default-target-url="/listas/Listas.xhtml" always-use-default-target="true" />
 		<logout logout-url="/j_spring_security_logout" invalidate-session="true" />
 	</http>
 	

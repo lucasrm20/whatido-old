@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.whatido.security.Seguranca;
 import com.whatido.util.jsf.FacesUtil;
 
 @Named
@@ -28,10 +29,15 @@ public class LoginBean implements Serializable {
 	private HttpServletRequest request;
 	@Inject
 	private HttpServletResponse response;
+	@Inject
+	private Seguranca seguranca;
 	
 	public void preRender(){
 		if("true".equals(request.getParameter("invalid"))){
 			FacesUtil.addErrorMessage("Usuário ou senha inválido.");
+		}
+		if(seguranca.isUsuarioLogado()){
+			seguranca.bloquearAcessoDepoisDeLogado();
 		}
 	}
 	

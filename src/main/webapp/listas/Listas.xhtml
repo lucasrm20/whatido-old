@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<ui:define name="titulo">Home</ui:define>
+	<ui:define name="titulo">Suas Listas</ui:define>
 	
 	<ui:define name="corpo">
 		<h:form id="frm">
@@ -34,7 +34,6 @@
 				rows="10" paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom">
 				
 				<p:column headerText="Descrição">
-					<h:outputText value="#{lista.descricao}" />
 					<p:link value="#{lista.descricao}" outcome="/tarefas/Tarefas">
 						<f:param name="listaPai" value="#{lista.id}" />
 					</p:link>

@@ -1,5 +1,7 @@
 package com.whatido.security;
 
+import java.io.IOException;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -54,6 +56,16 @@ public class Seguranca {
 				.getCurrentInstance().getExternalContext().getUserPrincipal();
 		
 		return auth != null && auth.getPrincipal() != null;
+	}
+	
+	public void bloquearAcessoDepoisDeLogado(){
+		try {
+			FacesContext.getCurrentInstance().getExternalContext()
+					.redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()
+							+ "/listas/Listas.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

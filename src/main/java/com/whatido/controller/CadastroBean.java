@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.whatido.model.Usuario;
+import com.whatido.security.Seguranca;
 import com.whatido.service.UsuarioService;
 import com.whatido.util.jsf.FacesUtil;
 
@@ -21,8 +22,17 @@ public class CadastroBean implements Serializable {
 	@Inject
 	UsuarioService usuarioService;
 	
+	@Inject
+	private Seguranca seguranca;
+	
 	public CadastroBean() {
 		limpar();
+	}
+	
+	public void init(){
+		if(seguranca.isUsuarioLogado()){
+			seguranca.bloquearAcessoDepoisDeLogado();
+		}
 	}
 	
 	private void limpar(){
