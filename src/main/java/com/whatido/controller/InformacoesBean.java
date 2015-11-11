@@ -12,6 +12,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import com.whatido.model.Usuario;
 import com.whatido.security.Seguranca;
 import com.whatido.service.UsuarioService;
+import com.whatido.util.email.EnviadorDeEmail;
+import com.whatido.util.email.TipoEmail;
 import com.whatido.util.jsf.FacesUtil;
 
 @Named
@@ -29,6 +31,9 @@ public class InformacoesBean implements Serializable {
 	
 	@Inject
 	private UsuarioService usuarioService;
+	
+	@Inject
+	private EnviadorDeEmail enviadorEmail;
 	
 	@PostConstruct
 	public void init(){
@@ -48,7 +53,8 @@ public class InformacoesBean implements Serializable {
 	}
 	
 	public void alterarSenha(){
-		usuarioService.alterarSenha(usuario, senhaAtual, novaSenha);
+		usuario = usuarioService.alterarSenha(usuario, senhaAtual, novaSenha);
+		enviadorEmail.enviarEmailConfirmacao(usuario, "Sua senha foi alterada", TipoEmail.NOVASENHA);
 		FacesUtil.addInfoMessage("A senha foi alterada.");
 	}
 	

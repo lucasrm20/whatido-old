@@ -2,7 +2,10 @@ package com.whatido.util.email;
 
 public enum TipoEmail {
 	
-	CADASTRO ("cadastro.ftl"), NOVALISTA ("novalista.ftl");
+	CADASTRO ("cadastro.ftl"),
+	NOVALISTA ("novalista.ftl"),
+	NOVASENHA ("novasenha.ftl"),
+	RECUPERARSENHA ("recuperarsenha.ftl");
 	
 	private String descricao;
 

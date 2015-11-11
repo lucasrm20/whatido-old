@@ -9,6 +9,8 @@ import javax.inject.Named;
 import com.whatido.model.Usuario;
 import com.whatido.security.Seguranca;
 import com.whatido.service.UsuarioService;
+import com.whatido.util.email.EnviadorDeEmail;
+import com.whatido.util.email.TipoEmail;
 import com.whatido.util.jsf.FacesUtil;
 
 @Named
@@ -24,6 +26,9 @@ public class CadastroBean implements Serializable {
 	
 	@Inject
 	private Seguranca seguranca;
+	
+	@Inject
+	private EnviadorDeEmail enviadorEmail;
 	
 	public CadastroBean() {
 		limpar();
@@ -41,7 +46,7 @@ public class CadastroBean implements Serializable {
 	
 	public void cadastrar(){
 		usuario = usuarioService.salvar(usuario);
-		usuarioService.enviarEmailConfirmacao(usuario);
+		enviadorEmail.enviarEmailConfirmacao(usuario, "Cadastro Realizado", TipoEmail.CADASTRO);
 		limpar();
 		FacesUtil.addInfoMessage("Cadastro realizado, por favor verifique seu email.");
 	}

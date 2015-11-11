@@ -11,6 +11,8 @@ import javax.inject.Named;
 import com.whatido.dao.ListaTarefasDao;
 import com.whatido.model.ListaTarefas;
 import com.whatido.service.ListaTarefasService;
+import com.whatido.util.email.EnviadorDeEmail;
+import com.whatido.util.email.TipoEmail;
 import com.whatido.util.jsf.FacesUtil;
 
 @Named
@@ -27,6 +29,9 @@ public class ListaBean implements Serializable {
 	@Inject
 	ListaTarefasDao listaDAO;
 	
+	@Inject
+	private EnviadorDeEmail enviadorEmail;
+	
 	private ListaTarefas itemSelecionado;
 	
 	@PostConstruct
@@ -41,7 +46,7 @@ public class ListaBean implements Serializable {
 	
 	public void salvar(){
 		novaLista = listaService.salvar(novaLista);
-		listaService.enviarEmailConfirmacao(novaLista);
+		enviadorEmail.enviarEmailConfirmacao(novaLista, "Sua lista foi criada", TipoEmail.NOVALISTA);
 		limpar();
 		FacesUtil.addInfoMessage("Lista cadastrada.");
 	}

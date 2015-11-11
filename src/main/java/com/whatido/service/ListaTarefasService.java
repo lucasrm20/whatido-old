@@ -5,17 +5,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.HtmlEmail;
-
 import com.whatido.dao.ListaTarefasDao;
 import com.whatido.dao.TarefasDAO;
 import com.whatido.model.ListaTarefas;
 import com.whatido.model.Tarefas;
 import com.whatido.security.Seguranca;
-import com.whatido.util.email.MailConfig;
-import com.whatido.util.email.TipoEmail;
-import com.whatido.util.freemarker.FreemarkerConfig;
 import com.whatido.util.jpa.Transactional;
 
 public class ListaTarefasService implements Serializable {
@@ -28,11 +22,6 @@ public class ListaTarefasService implements Serializable {
 	Seguranca seguranca;
 	@Inject
 	private TarefasDAO tarefasDAO;
-	
-	@Inject
-	MailConfig mailConfig;
-	@Inject
-	FreemarkerConfig freemarkerConfig;
 	
 	@Transactional
 	public ListaTarefas salvar(ListaTarefas lista){
@@ -72,22 +61,6 @@ public class ListaTarefasService implements Serializable {
 			return listaTarefasDAO.buscarTodas();
 		}else{
 			return listaTarefasDAO.buscarTodasPorUsuario(seguranca.getIdUsuarioLogado());
-		}
-	}
-	
-	public void enviarEmailConfirmacao(ListaTarefas lista) {
-		try {
-			HtmlEmail email = (HtmlEmail) mailConfig.getMailConfig();
-			email.setSubject("Cadastro Realizado");
-			
-			String msg = freemarkerConfig.getEmailComTemplate(TipoEmail.NOVALISTA, lista);
-			email.setHtmlMsg(msg);
-			
-			email.addTo(lista.getUsuario().getEmail());
-			email.send();
-			
-		} catch (EmailException e) {
-			e.printStackTrace();
 		}
 	}
 	
