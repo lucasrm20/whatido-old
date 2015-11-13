@@ -42,5 +42,20 @@ public class EnviadorDeEmail implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void enviarEmailContato(EmailContato emailContato){
+		try {
+			HtmlEmail email = (HtmlEmail) mailConfig.getMailConfig();
+			email.setSubject(emailContato.getAssunto());
+			email.addTo("lrpg_doidao@hotmail.com");
+			
+			String msg = freemarkerConfig.getEmailComTemplate(TipoEmail.CONTATO, emailContato);
+			email.setMsg(msg);
+			
+			email.send();
+		} catch (EmailException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

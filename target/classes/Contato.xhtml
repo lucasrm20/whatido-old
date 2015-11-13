@@ -1,0 +1,39 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	<ui:define name="titulo">Contato</ui:define>
+	
+	<ui:define name="corpo">
+		<div class="form-cadastro">
+			<h:form>
+				<h1>Contato</h1>
+				<p>Encontrou algum problema ou tem alguma sugestão a fazer? Entre em contato:</p>
+				
+				<p:messages autoUpdate="true" closable="true" />
+				
+				<p:panelGrid columns="2" styleClass="auto-adaptavel">
+					<p:outputLabel value="Nome" for="nome" />
+					<p:inputText id="nome" value="#{contatoBean.emailContato.nome}" styleClass="auto-adaptavel" />
+					
+					<p:outputLabel value="Email" for="email" />
+					<p:inputText id="email" value="#{contatoBean.emailContato.email}" styleClass="auto-adaptavel" />
+					
+					<p:outputLabel value="assunto" for="assunto" />
+					<p:inputText id="assunto" value="#{contatoBean.emailContato.assunto}" styleClass="auto-adaptavel" />
+					
+					<p:outputLabel value="Mensagem" for="mensagem" />
+					<p:inputTextarea id="mensagem" rows="10" cols="50" value="#{contatoBean.emailContato.mensagem}" />
+					
+					<p:spacer />
+					<p:commandButton value="Enviar" action="#{contatoBean.enviar}" ajax="false" update="@form" />
+				</p:panelGrid>
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
