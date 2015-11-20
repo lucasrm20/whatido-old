@@ -5,6 +5,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0px;
 	font-weight: normal;
+	background-color: #F0F0F0;
 }
 
 header {
@@ -33,7 +34,11 @@ header>div {
 
 .menu-opcoes {
 	float: right;
-	margin-right: 110px;
+	padding-right: 20px;
+}
+
+.menu-opcoes a{
+	margin-left: 10px;
 }
 
 .menu-saudacao {
@@ -83,4 +88,43 @@ header>div {
 	width: 30%;
 	margin: auto;
 }
-/* PAGINA DE CADASTRO */
+
+/*ESPAÇAMENTO FIELDSETS */
+.ui-fieldset {
+	margin-bottom: 20px;
+}
+
+/* LISTAS */
+.espacamento-form td{
+	padding-right: 10px;
+}
+
+.form-tarefas{
+	width: 70%;
+	margin: auto;
+}
+
+.botoes-acoes{
+	width: 100px;
+	text-align: center;
+}
+
+.linha-sugerida{
+	margin: auto;
+}
+
+.form-geral{
+	width: 40%;
+	margin: auto;
+}
+
+.centralizar-componente{
+	margin: auto;
+}
+
+footer{
+	text-align: center;
+	font-size: 1.2em;
+	margin-top: 50px;
+	margin-bottom: 10px;
+}

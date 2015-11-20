@@ -18,19 +18,27 @@
 				<h1>Login</h1>
 				<p:messages autoUpdate="true" closable="true" />
 				
-				<p:panelGrid columns="2" styleClass="auto-adaptavel">
-					<p:outputLabel value="Email" />
-					<p:inputText id="j_username" styleClass="auto-adaptavel" value="#{loginBean.email}" />
+				<p:fieldset>
+					<h:panelGrid columns="2" styleClass="auto-adaptavel">
+						<p:outputLabel value="Email" />
+						<p:inputText id="j_username" styleClass="auto-adaptavel" value="#{loginBean.email}" />
+						
+						<p:outputLabel value="Senha" />
+						<p:password id="j_password" styleClass="auto-adaptavel" />
+						
+						<p:spacer />
+						<p:commandButton value="Login" action="#{loginBean.login}" ajax="false" />
+						
+						<p:spacer />
+						<h:panelGrid columns="3">
+							<p:link value="Esqueceu sua senha?" outcome="/usuario/RecuperarSenha" />
+							<p:spacer width="5" />
+							<p:link value="Cadastrar-se" outcome="/usuario/Cadastro" />
+						</h:panelGrid>
+						
+					</h:panelGrid>
 					
-					<p:outputLabel value="Senha" />
-					<p:password id="j_password" styleClass="auto-adaptavel" />
-					
-					<p:spacer />
-					<p:commandButton value="Login" action="#{loginBean.login}" ajax="false" />
-				</p:panelGrid>
-				
-				<p:link value="Cadastrar-se" outcome="/usuario/Cadastro" />
-				<p:link value="Esqueceu sua senha?" outcome="/usuario/RecuperarSenha" />
+				</p:fieldset>
 			</h:form>
 		</div>
 	</ui:define>

@@ -13,14 +13,16 @@
 				<h1>Recuperar Senha</h1>
 				<p:messages autoUpdate="true" closable="true" />
 				
-				<p:panelGrid columns="2" styleClass="auto-adaptavel">
-					
-					<p:outputLabel value="Email" for="email" />
-					<p:inputText id="email" value="#{recuperarSenhaBean.email}" styleClass="auto-adaptavel" />
-					
-					<p:spacer />
-					<p:commandButton value="Recuperar" action="#{recuperarSenhaBean.recuperar}" ajax="false" update="@form" />
-				</p:panelGrid>
+				<p:fieldset>
+					<h:panelGrid columns="2" styleClass="auto-adaptavel">
+						
+						<p:outputLabel value="Email" for="email" />
+						<p:inputText id="email" value="#{recuperarSenhaBean.email}" styleClass="auto-adaptavel" />
+						
+						<p:spacer />
+						<p:commandButton value="Recuperar" action="#{recuperarSenhaBean.recuperar}" ajax="false" update="@form" />
+					</h:panelGrid>
+				</p:fieldset>
 				
 			</h:form>
 		</div>

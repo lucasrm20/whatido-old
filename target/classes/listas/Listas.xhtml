@@ -13,41 +13,43 @@
 			<h1>Suas Listas de Tarefas</h1>
 			<p:messages autoUpdate="true" closable="true" />
 			
-			<p:toolbar styleClass="barra-ferramentas">
-				<p:toolbarGroup>
-					<p:button value="Novo" outcome="/listas/Listas" />
-					<p:commandButton value="Salvar" id="botaoSalvar" action="#{listaBean.salvar}" update="@form" />
-				</p:toolbarGroup>
-				
-				<p:toolbarGroup align="right">
-					<p:button value="Pesquisa" />
-				</p:toolbarGroup>
-			</p:toolbar>
+			<p:fieldset legend="Nova Lista">
+				<h:panelGrid columns="3" styleClass="espacamento-form">
+					<p:outputLabel value="Descrição" for="descricao" />
+					<p:inputText id="descricao" value="#{listaBean.novaLista.descricao}" size="80" />
+					
+					<p:commandButton value="Salvar" id="botaoSalvar" action="#{listaBean.salvar}" update="@form"
+						icon="ui-icon-disk" />
+				</h:panelGrid>
+			</p:fieldset>
 			
-			<p:panelGrid columns="2" styleClass="grid-formulario">
-				<p:outputLabel value="Descrição" for="descricao" />
-				<p:inputText id="descricao" value="#{listaBean.novaLista.descricao}" />
-			</p:panelGrid>
+			<p:fieldset legend="Listas Cadastradas">
 			
-			<p:dataTable id="listasTable" value="#{listaBean.listaDeListas}" var="lista"
-				styleClass="tabela-itens" emptyMessage="Nenhum lista encontrada"
-				rows="10" paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom">
+				<p:dataTable id="listasTable" value="#{listaBean.listaDeListas}" var="lista"
+					emptyMessage="Nenhum lista encontrada"
+					rows="10" paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom">
+					
+					<p:column headerText="Descrição">
+						<p:link value="#{lista.descricao}" outcome="/tarefas/Tarefas">
+							<f:param name="listaPai" value="#{lista.id}" />
+						</p:link>
+					</p:column>
+					
+					<p:column styleClass="botoes-acoes">
+						<p:button icon="ui-icon-plus" title="Adicionar Tarefas" outcome="/tarefas/Tarefas">
+							<f:param name="listaPai" value="#{lista.id}" />
+						</p:button>
+					
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							oncomplete="PF('confirmacaoExclusao').show()" process="@this"
+							update=":frm:confirmacaoExclusaoDialog">
+							<f:setPropertyActionListener target="#{listaBean.itemSelecionado}"
+								value="#{lista}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
 				
-				<p:column headerText="Descrição">
-					<p:link value="#{lista.descricao}" outcome="/tarefas/Tarefas">
-						<f:param name="listaPai" value="#{lista.id}" />
-					</p:link>
-				</p:column>
-				
-				<p:column>
-					<p:commandButton icon="ui-icon-trash" title="Excluir"
-						oncomplete="PF('confirmacaoExclusao').show()" process="@this"
-						update=":frm:confirmacaoExclusaoDialog">
-						<f:setPropertyActionListener target="#{listaBean.itemSelecionado}"
-							value="#{lista}" />
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
+			</p:fieldset>
 		
 			<p:confirmDialog global="true" widgetVar="confirmacaoExclusao" header="Confirmar Exclusão"
 				message="Tem certeza que deseja excluir a lista #{listaBean.itemSelecionado.descricao}?"

@@ -14,24 +14,30 @@
 	<ui:define name="corpo">
 		<div class="form-cadastro">
 			<h:form>
-				<h1>Cadastrar</h1>
+				<h1>Cadastro</h1>
 				<p:messages autoUpdate="true" closable="true" />
 				
-				<p:panelGrid columns="2" styleClass="auto-adaptavel">
-					<p:outputLabel value="Nome" for="nome" />
-					<p:inputText id="nome" value="#{cadastroBean.usuario.nome}" styleClass="auto-adaptavel" />
-					
-					<p:outputLabel value="Email" for="email" />
-					<p:inputText id="email" value="#{cadastroBean.usuario.email}" styleClass="auto-adaptavel" />
-					
-					<p:outputLabel value="Senha" for="senha" />
-					<p:password id="senha" value="#{cadastroBean.usuario.senha}" styleClass="auto-adaptavel" />
-					
-					<p:spacer />
-					<p:commandButton value="Cadastrar" action="#{cadastroBean.cadastrar}" ajax="false" update="@form" />
-				</p:panelGrid>
-				
-				<p:link value="Já sou cadastrado" outcome="/usuario/Login" />
+				<p:fieldset>
+					<h:panelGrid columns="2" styleClass="auto-adaptavel">
+						<p:outputLabel value="Nome" for="nome" />
+						<p:inputText id="nome" value="#{cadastroBean.usuario.nome}" styleClass="auto-adaptavel" />
+						
+						<p:outputLabel value="Email" for="email" />
+						<p:inputText id="email" value="#{cadastroBean.usuario.email}" styleClass="auto-adaptavel" />
+						
+						<p:outputLabel value="Senha" for="senha" />
+						<p:password id="senha" value="#{cadastroBean.usuario.senha}" styleClass="auto-adaptavel" />
+						
+						<p:spacer />
+						
+						<h:panelGrid columns="3">
+							<p:commandButton value="Cadastrar" action="#{cadastroBean.cadastrar}" ajax="false" update="@form" />
+							<p:spacer />
+							<p:link value="Já sou cadastrado" outcome="/usuario/Login" />
+						</h:panelGrid>
+					</h:panelGrid>
+
+				</p:fieldset>
 			</h:form>
 		</div>
 	</ui:define>

@@ -20,14 +20,12 @@
 	
 	<header>
 		<div class="menu-logo">
-			What I Do?
+			<h:link disabled="true">
+				<h:graphicImage library="images" name="logo.png" />
+			</h:link>
 		</div>
 		
 		<div class="menu-opcoes">
-				
-				<c:if test="#{seguranca.usuarioLogado}">
-					<span class="menu-saudacao">Olá, #{seguranca.nomeUsuario}!</span>
-				</c:if>
 				
 				<h:form style="display: inline-block">
 					<p:menubar styleClass="menu-sistema">
@@ -38,7 +36,7 @@
 						<p:menuitem value="Login" outcome="/usuario/Login"
 							rendered="#{!seguranca.usuarioLogado}" />
 							
-						<p:submenu label="#{seguranca.nomeUsuario}" rendered="#{seguranca.usuarioLogado}" >
+						<p:submenu label="Olá, #{seguranca.nomeUsuario}" rendered="#{seguranca.usuarioLogado}" >
 							<p:menuitem value="Minhas Informações" outcome="/usuario/Informacoes" />
 							<p:separator />
 							<p:menuitem value="Logout" url="/j_spring_security_logout"
@@ -58,8 +56,7 @@
 	
 	<footer>
 		<p:separator styleClass="separator" />
-		What I Do? - Veja também:
-		<a href="http://whatacolor.tk" target="_blank">WhatAcolor?!</a>
+		What I Do? © 2015<br />Não sabe por onde começar? Nós te damos uma sugestão.<br />
 	</footer>
 
 </h:body>

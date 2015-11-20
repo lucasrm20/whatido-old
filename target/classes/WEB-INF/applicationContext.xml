@@ -9,9 +9,9 @@
 	<beans:bean id="appUserDetailsService" class="com.whatido.security.AppUserDetailsService" />
 	
 	<http pattern="/javax.faces.resource/**" security="none" />
+	<http pattern="/Home.html" security="none" />
 	
 	<http auto-config="false" use-expressions="true">
-		<intercept-url pattern="/Home.xhtml" access="permitAll" />
 		<intercept-url pattern="/Contato.xhtml" access="permitAll" />
 		<intercept-url pattern="/usuario/Cadastro.xhtml" access="permitAll"/>
 		<intercept-url pattern="/usuario/Login.xhtml" access="permitAll"/>
